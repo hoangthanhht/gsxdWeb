@@ -7,10 +7,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
-class User extends Authenticatable
+use App\Traits\HasPermissionsTrait;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
+class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens;
-    use HasFactory, Notifiable;
+    use HasApiTokens, HasPermissionsTrait;
+    use HasFactory, Notifiable,SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -21,7 +24,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'role',
+        'path_avatar',
+        'total_mark',
+        'email_verified_at',
+        'remember_token',
     ];
 
     /**

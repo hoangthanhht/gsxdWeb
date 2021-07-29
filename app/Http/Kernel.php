@@ -17,10 +17,13 @@ class Kernel extends HttpKernel
         // \App\Http\Middleware\TrustHosts::class,
         \App\Http\Middleware\TrustProxies::class,
         \Fruitcake\Cors\HandleCors::class,
-        \App\Http\Middleware\PreventRequestsDuringMaintenance::class,
+        //\App\Http\Middleware\PreventRequestsDuringMaintenance::class,
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
+        \App\Http\Middleware\Cors::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
+         //\Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
+         \App\Http\Middleware\CheckForMaintenanceMode::class,
     ];
 
     /**
@@ -40,8 +43,11 @@ class Kernel extends HttpKernel
         ],
 
         'api' => [
-            'throttle:api',
+            //'throttle:api',
+            //'throttle:60,1',// khắc phục lỗi 429 serve
+            'throttle:120,1',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            \Fruitcake\Cors\HandleCors::class,
         ],
     ];
 
@@ -62,5 +68,6 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        'cors' => \App\Http\Middleware\Cors::class
     ];
 }
