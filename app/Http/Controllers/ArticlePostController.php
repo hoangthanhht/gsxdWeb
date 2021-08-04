@@ -9,8 +9,6 @@ class ArticlePostController extends Controller
 {
     public function createArticle(Request $request) {
         $user = User::find($request->idUser);
-        $a = $user->name;
-        $chuDe = $request->chuDe;
         $ArticlePost = ArticlePost::create([
             //$ArticlePost = DB::table('article_posts')->insert([
             'chuDe' => $request->chuDe,

@@ -9,6 +9,7 @@ use App\Http\Controllers\AdminRoleController;
 use App\Http\Controllers\VerifyEmailController;
 use App\Http\Controllers\AdminConfigSystem;
 use App\Http\Controllers\ResetPasswordController;
+use App\Http\Controllers\taskController;
 
 /*
 |--------------------------------------------------------------------------
@@ -72,8 +73,11 @@ Route::post('sendEmailResetPassword', [ResetPasswordController:: class,'sendMail
 Route::post('changePass', [ResetPasswordController:: class,'reset']);
 // lấy đường dãn file avatar
 Route::get('getPathFile/{id}', [PassportAuthController::class, 'getPathFile']);
-/* API CHO DANG BAI VIET */
-
+/* API CHO CÔNG VIỆC */
+// tạo công việc
+Route::post('createTask', [taskController:: class,'store']);
+// lấy công việc 
+Route::get('showTask', [taskController::class, 'show']);
 //====================================\\//====================================//
 
 
