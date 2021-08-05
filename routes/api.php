@@ -43,6 +43,9 @@ Route::get('/email/verify/{id}/{hash}', [VerifyEmailController::class, 'verify']
 Route::middleware('auth:api')->group(function () {
     Route::resource('post/bcday', ReportDayController::class);
 });
+// láy toàn bộ các bản ghi theo 1 thời gian cụ thể
+Route::post('getTimeBaoCao', [ReportDayController::class, 'getTimeBaoCao']);
+
 //=======================================\\//================================//
 /* PHẦN API CHO USER */
 // lấy dữ liệu user và role về từ data base

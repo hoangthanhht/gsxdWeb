@@ -4,23 +4,27 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\ReportDay;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 class ReportDayController extends Controller
 {
     public function index()
     {
         $posts = ReportDay::all(); // hàm all sẽ lất ra tất cả sản phẩm
         // $posts = auth()->user()->posts;
- 
+  
         return response()->json([
             'success' => true,
             'data' => $posts
         ]);
     }
  
-    public function show($id)
+    public function show($time)
     {
-        $post = auth()->user()->posts()->find($id);
- 
+        //$post = auth()->user()->posts()->find($id);
+        $time = str_replace('-','/',$time);
+        $post = DB::table('report_days')
+        ->where('dateBaocao', $time)
+        ->get();
         if (!$post) {
             return response()->json([
                 'success' => false,
@@ -31,7 +35,7 @@ class ReportDayController extends Controller
         return response()->json([
             'success' => true,
             'data' => $post->toArray()
-        ], 400);
+        ], 200);
     }
  
     public function store(Request $request)
@@ -105,6 +109,39 @@ class ReportDayController extends Controller
                 'success' => false,
                 'message' => 'Post can not be deleted'
             ], 500);
+        }
+    }
+
+    public function getTimeBaoCao(Request $request)
+    {
+        $post = null;
+        if($request->kind === 'D')
+        //$posts = ReportDay::all(); // hàm all sẽ lất ra tất cả sản phẩm
+        // $posts = auth()->user()->posts;
+        {
+            $post = DB::table('report_days')
+            ->where('loaiBaocao', 'D')
+            ->get();
+         
+        }
+        if($request->kind === 'W')
+        {
+            $post = DB::table('report_days')
+            ->where('loaiBaocao', 'W')
+            ->get();
+        }
+        if($request->kind === 'M')
+        {
+            $post = DB::table('report_days')
+            ->where('loaiBaocao', 'M')
+            ->get();
+        }
+        if($post)
+        {
+            return response()->json([
+                'success' => true,
+                'data' => $post
+            ],200);
         }
     }
 }
