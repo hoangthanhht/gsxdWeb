@@ -8,5 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class ReportDay extends Model
 {
     use HasFactory;
-    protected $fillable = ['contentJson','dateBaocao','imgBase64'];
+    protected $fillable = ['contentJson','dateBaocao','imgBase64','tenDuan','diaDiem',
+    'chuDauTu','banQuanLy','nhaThau','tvtk'];
 }

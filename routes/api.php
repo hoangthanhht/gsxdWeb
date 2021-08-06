@@ -45,6 +45,10 @@ Route::middleware('auth:api')->group(function () {
 });
 // láy toàn bộ các bản ghi theo 1 thời gian cụ thể
 Route::post('getTimeBaoCao', [ReportDayController::class, 'getTimeBaoCao']);
+// láy toàn bộ các du an dang giam sat
+Route::post('getNameProject', [ReportDayController::class, 'getNameProject']);
+// láy toàn bộ các du an dang giam sat
+Route::get('getContentBaoCao/{time}/{nameProj}', [ReportDayController::class, 'getContentBaoCao']);
 
 //=======================================\\//================================//
 /* PHẦN API CHO USER */

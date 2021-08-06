@@ -52,6 +52,12 @@ class ReportDayController extends Controller
         $post->imgBase64 = $request->imgBase64;
         $post->loaiBaocao = $request->loaiBaocao;
         $post->user_id = $request->user_id;
+        $post->tenDuan = $request->tenDuan;
+        $post->diaDiem = $request->diaDiem;
+        $post->chuDauTu = $request->chuDauTu;
+        $post->banQuanLy = $request->banQuanLy;
+        $post->nhaThau = $request->nhaThau;
+        $post->tvtk = $request->tvtk;
         //return ReportDay::create($request->all());
         if (auth()->user()->posts()->save($post))
             return response()->json([
@@ -102,7 +108,8 @@ class ReportDayController extends Controller
  
         if ($post->delete()) {
             return response()->json([
-                'success' => true
+                'success' => true,
+                'message' => 'Xóa thành công'
             ]);
         } else {
             return response()->json([
@@ -121,20 +128,20 @@ class ReportDayController extends Controller
         {
             $post = DB::table('report_days')
             ->where('loaiBaocao', 'D')
-            ->get();
+            ->select('dateBaocao')->distinct()->get();
          
         }
         if($request->kind === 'W')
         {
             $post = DB::table('report_days')
             ->where('loaiBaocao', 'W')
-            ->get();
+            ->select('dateBaocao')->distinct()->get();
         }
         if($request->kind === 'M')
         {
             $post = DB::table('report_days')
             ->where('loaiBaocao', 'M')
-            ->get();
+            ->select('dateBaocao')->distinct()->get();
         }
         if($post)
         {
@@ -144,4 +151,60 @@ class ReportDayController extends Controller
             ],200);
         }
     }
+
+    public function getNameProject(Request $request)
+    {
+        $getNameProject = DB::table('report_days')
+        ->where('loaiBaocao',$request->kind)
+        ->select('tenDuan')->distinct()->get();
+        if($getNameProject)
+        {
+            return response()->json([
+                'success' => true,
+                'data' => $getNameProject
+            ],200);
+        }
+    }
+
+    public function getContentBaoCao($time,$nameProj)
+    {
+        //$post = auth()->user()->posts()->find($id);
+        $time = str_replace('_','/',$time);
+        $post = DB::table('report_days')
+        ->where('dateBaocao', $time)
+        ->where('tenDuan', $nameProj)
+        ->get();
+        if (!$post) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Post not found '
+            ], 400);
+        }
+ 
+        return response()->json([
+            'success' => true,
+            'data' => $post->toArray()
+        ], 200);
+    }
+
+    public function deleteBaoCao($time,$nameProj)
+    {
+        //$post = auth()->user()->posts()->find($id);
+        $post = DB::table('report_days')
+        ->where('dateBaocao', $time)
+        ->where('tenDuan', $nameProj)
+        ->delete();
+        if (!$post) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Xóa báo cáo không thành công'
+            ], 400);
+        }
+ 
+        return response()->json([
+            'success' => true,
+            'message' => 'Xóa báo cáo thành công'
+        ], 200);
+    }
+ 
 }
