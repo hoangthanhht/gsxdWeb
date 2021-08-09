@@ -86,7 +86,8 @@ class ReportDayController extends Controller
  
         if ($updated)
             return response()->json([
-                'success' => true
+                'success' => true,
+                'message' => 'Update thành công'
             ]);
         else
             return response()->json([
@@ -128,6 +129,7 @@ class ReportDayController extends Controller
         {
             $post = DB::table('report_days')
             ->where('loaiBaocao', 'D')
+            ->where('tenDuan', $request->site)
             ->select('dateBaocao')->distinct()->get();
          
         }
@@ -135,12 +137,14 @@ class ReportDayController extends Controller
         {
             $post = DB::table('report_days')
             ->where('loaiBaocao', 'W')
+            ->where('tenDuan', $request->site)
             ->select('dateBaocao')->distinct()->get();
         }
         if($request->kind === 'M')
         {
             $post = DB::table('report_days')
             ->where('loaiBaocao', 'M')
+            ->where('tenDuan', $request->site)
             ->select('dateBaocao')->distinct()->get();
         }
         if($post)
