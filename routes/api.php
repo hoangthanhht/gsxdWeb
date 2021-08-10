@@ -10,6 +10,7 @@ use App\Http\Controllers\VerifyEmailController;
 use App\Http\Controllers\AdminConfigSystem;
 use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\taskController;
+use App\Http\Controllers\fileManagerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -86,7 +87,11 @@ Route::post('createTask', [taskController:: class,'store']);
 // lấy công việc 
 Route::get('showTask', [taskController::class, 'show']);
 //====================================\\//====================================//
-
+/* API CHO HỒ SƠ */
+// tạo hồ sơ
+Route::post('createFile', [fileManagerController:: class,'store']);
+// lấy thông tin hồ sơ
+Route::get('showFile', [fileManagerController::class, 'show']);
 
 //=======================================\\//==========================================================//
 
