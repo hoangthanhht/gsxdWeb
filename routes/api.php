@@ -11,6 +11,8 @@ use App\Http\Controllers\AdminConfigSystem;
 use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\taskController;
 use App\Http\Controllers\fileManagerController;
+use App\Http\Controllers\contractController;
+use App\Http\Controllers\projectController;
 
 /*
 |--------------------------------------------------------------------------
@@ -93,14 +95,24 @@ Route::post('createFile', [fileManagerController:: class,'store']);
 // lấy thông tin hồ sơ
 Route::get('showFile', [fileManagerController::class, 'show']);
 
-//=======================================\\//==========================================================//
+//=======================================\\//==================================//
 
+/* API CHO HOP DỒNG */
+// tạo hồ sơ
+Route::post('createContract', [contractController:: class,'store']);
+// lấy thông tin hồ sơ
+Route::get('showContract', [contractController::class, 'show']);
 
+//=======================================\\//==================================//
 
+/* API CHO PROJECT */
+// tạo project
+Route::post('createProject', [projectController:: class,'store']);
+// lấy thông tin project
+Route::get('showProject', [projectController::class, 'show']);
+// lấy ten project
+Route::get('getProjectName', [projectController::class, 'getProjectName']);
 
-
-
-/* PHẦN LƯU VÀ CHỈNH SỬA TRONG BẢNG CHÍNH CỦA LƯU VẬT TƯ */
 
 
 
