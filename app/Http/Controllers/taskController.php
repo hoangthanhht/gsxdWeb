@@ -21,6 +21,8 @@ class taskController extends Controller
                 'ketQua'=>$request->ketQua,
                 'tinhTrang'=>$request->tinhTrang,
                 'luuY'=>$request->luuY,
+                'duanLienQuan'=>$request->duanLienQuan,
+                
         ]);
         if($Task) {
             return response()->json([
@@ -41,5 +43,37 @@ class taskController extends Controller
         // $posts = auth()->user()->posts;
 
         return response()->json($task);
+    }
+    public function getTaskById ($task_id)
+    {
+        $task = task::find($task_id);
+        // $posts = auth()->user()->posts;
+
+        return response()->json($task);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $task = task::find($id);
+ 
+        if (!$task) {
+            return response()->json([
+                'success' => false,
+                'msg' => 'Task not found'
+            ], 400);
+        }
+ 
+        $updated = $task->fill($request->all())->save();
+ 
+        if ($updated)
+            return response()->json([
+                'success' => true,
+                'msg' => 'Update thành công'
+            ]);
+        else
+            return response()->json([
+                'success' => false,
+                'msg' => 'Post can not be updated'
+            ], 500);
     }
 }

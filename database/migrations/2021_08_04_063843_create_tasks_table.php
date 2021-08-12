@@ -19,6 +19,7 @@ class CreateTasksTable extends Migration
             $table->text('keHoach')->nullable(); 
             $table->text('thucHien')->nullable(); 
             $table->text('nguoiDeXuat')->nullable(); 
+            $table->text('duanLienQuan')->nullable(); 
             $table->text('nguoiPhoiHop')->nullable(); 
             $table->text('moTaTask')->nullable(); 
             $table->text('mucDo')->nullable(); 

@@ -12,6 +12,7 @@ class fileManagerController extends Controller
             //$ArticlePost = DB::table('article_posts')->insert([
                 'duAn'=>$request->duAn,
                 'loaiHoSo'=>$request->loaiHoSo,
+                'kyHieuHoSo'=>$request->kyHieuHoSo,
                 'tenHoSo'=>$request->tenHoSo,
                 'soLuong'=>$request->soLuong,
                 'ngayNhan'=>$request->ngayNhan,

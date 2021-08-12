@@ -13,6 +13,7 @@ use App\Http\Controllers\taskController;
 use App\Http\Controllers\fileManagerController;
 use App\Http\Controllers\contractController;
 use App\Http\Controllers\projectController;
+use App\Http\Controllers\infomationEmployController;
 
 /*
 |--------------------------------------------------------------------------
@@ -83,11 +84,19 @@ Route::post('sendEmailResetPassword', [ResetPasswordController:: class,'sendMail
 Route::post('changePass', [ResetPasswordController:: class,'reset']);
 // lấy đường dãn file avatar
 Route::get('getPathFile/{id}', [PassportAuthController::class, 'getPathFile']);
+//====================================\\//====================================//
+
+
 /* API CHO CÔNG VIỆC */
 // tạo công việc
 Route::post('createTask', [taskController:: class,'store']);
 // lấy công việc 
 Route::get('showTask', [taskController::class, 'show']);
+// lấy công việc 
+Route::get('getTaskById/{id}', [taskController::class, 'getTaskById']);
+// update công việc 
+Route::post('update/{id}', [taskController::class, 'update']);
+
 //====================================\\//====================================//
 /* API CHO HỒ SƠ */
 // tạo hồ sơ
@@ -112,7 +121,13 @@ Route::post('createProject', [projectController:: class,'store']);
 Route::get('showProject', [projectController::class, 'show']);
 // lấy ten project
 Route::get('getProjectName', [projectController::class, 'getProjectName']);
+//=======================================\\//==================================//
 
+/* API CHO INFOMATION EMPLOY*/
+// tạo infomation Employ
+Route::post('createinfomationEmploy', [infomationEmployController:: class,'store']);
+// lấy infomation Employ
+Route::get('showinfomationEmploy', [infomationEmployController::class, 'show']);
 
 
 

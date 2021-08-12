@@ -9,5 +9,5 @@ class task extends Model
 {
     use HasFactory;
     protected $fillable = ['Ten','keHoach','thucHien','nguoiDeXuat','nguoiPhoiHop','moTaTask'
-    ,'mucDo','ketQua','tinhTrang','luuY'];
+    ,'mucDo','ketQua','tinhTrang','luuY','duanLienQuan'];
 }

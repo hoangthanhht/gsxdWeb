@@ -11,6 +11,7 @@ class fileManager extends Model
     protected $fillable = [
     'duAn',
     'loaiHoSo',
+    'kyHieuHoSo',
     'tenHoSo',
     'soLuong',
     'ngayNhan',
