@@ -69,4 +69,37 @@ class infomationEmployController extends Controller
 
         return response()->json($infomationEmploy);
     }
+
+    public function getInfomationEmployById ($infomationEmploy_id)
+    {
+        $infomationEmploy = infomationEmploy::find($infomationEmploy_id);
+        // $posts = auth()->user()->posts;
+
+        return response()->json($infomationEmploy);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $infomationEmploy = infomationEmploy::find($id);
+ 
+        if (!$infomationEmploy) {
+            return response()->json([
+                'success' => false,
+                'msg' => 'File not found'
+            ], 400);
+        }
+ 
+        $updated = $infomationEmploy->fill($request->all())->save();
+ 
+        if ($updated)
+            return response()->json([
+                'success' => true,
+                'msg' => 'Update thành công'
+            ]);
+        else
+            return response()->json([
+                'success' => false,
+                'msg' => 'Post can not be updated'
+            ], 500);
+    }
 }

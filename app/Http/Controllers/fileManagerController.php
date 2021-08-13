@@ -45,4 +45,37 @@ class fileManagerController extends Controller
 
         return response()->json($file);
     }
+
+    public function getFileById ($fileManager_id)
+    {
+        $fileManager = fileManager::find($fileManager_id);
+        // $posts = auth()->user()->posts;
+
+        return response()->json($fileManager);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $fileManager = fileManager::find($id);
+ 
+        if (!$fileManager) {
+            return response()->json([
+                'success' => false,
+                'msg' => 'File not found'
+            ], 400);
+        }
+ 
+        $updated = $fileManager->fill($request->all())->save();
+ 
+        if ($updated)
+            return response()->json([
+                'success' => true,
+                'msg' => 'Update thành công'
+            ]);
+        else
+            return response()->json([
+                'success' => false,
+                'msg' => 'Post can not be updated'
+            ], 500);
+    }
 }

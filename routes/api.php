@@ -103,15 +103,21 @@ Route::post('update/{id}', [taskController::class, 'update']);
 Route::post('createFile', [fileManagerController:: class,'store']);
 // lấy thông tin hồ sơ
 Route::get('showFile', [fileManagerController::class, 'show']);
-
+// lấy công việc 
+Route::get('getFileById/{id}', [fileManagerController::class, 'getFileById']);
+// update ho so
+Route::post('update/{id}', [fileManagerController::class, 'update']);
 //=======================================\\//==================================//
 
 /* API CHO HOP DỒNG */
-// tạo hồ sơ
+// tạo hợp đồng
 Route::post('createContract', [contractController:: class,'store']);
-// lấy thông tin hồ sơ
+// lấy thông tin hợp đồng
 Route::get('showContract', [contractController::class, 'show']);
-
+// lấy hợp đồng 
+Route::get('getContractById/{id}', [contractController::class, 'getContractById']);
+// update hợp đồng
+Route::post('update/{id}', [contractController::class, 'update']);
 //=======================================\\//==================================//
 
 /* API CHO PROJECT */
@@ -121,6 +127,10 @@ Route::post('createProject', [projectController:: class,'store']);
 Route::get('showProject', [projectController::class, 'show']);
 // lấy ten project
 Route::get('getProjectName', [projectController::class, 'getProjectName']);
+// lấy tin project 
+Route::get('getProjectById/{id}', [projectController::class, 'getProjectById']);
+// update tin project
+Route::post('update/{id}', [projectController::class, 'update']);
 //=======================================\\//==================================//
 
 /* API CHO INFOMATION EMPLOY*/
@@ -128,7 +138,10 @@ Route::get('getProjectName', [projectController::class, 'getProjectName']);
 Route::post('createinfomationEmploy', [infomationEmployController:: class,'store']);
 // lấy infomation Employ
 Route::get('showinfomationEmploy', [infomationEmployController::class, 'show']);
-
+// lấy infomation Employ 
+Route::get('getInfomationEmployById/{id}', [infomationEmployController::class, 'getInfomationEmployById']);
+// update infomation Employ
+Route::post('update/{id}', [infomationEmployController::class, 'update']);
 
 
 
