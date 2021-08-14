@@ -14,6 +14,7 @@ use App\Http\Controllers\fileManagerController;
 use App\Http\Controllers\contractController;
 use App\Http\Controllers\projectController;
 use App\Http\Controllers\infomationEmployController;
+use App\Http\Controllers\BackupController;
 
 /*
 |--------------------------------------------------------------------------
@@ -143,6 +144,10 @@ Route::get('getInfomationEmployById/{id}', [infomationEmployController::class, '
 // update infomation Employ
 Route::post('update/{id}', [infomationEmployController::class, 'update']);
 
+//=======================================\\//==========================================================//
+/* API CHO BACKUP DU LIEU */
+Route::get('getListFile', [BackupController::class, 'index']);
+Route::get('downLoadFile/{id}', [BackupController::class, 'download']);
+Route::get('deleteFile/{id}', [BackupController::class, 'destroy']);
 
-
-Route::get('test', [PassportAuthController::class, 'test']);
+Route::get('test/{name}', [BackupController::class, 'destroy']);

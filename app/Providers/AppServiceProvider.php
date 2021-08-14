@@ -26,6 +26,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
+        // tạo phân trang từ 1 mảng cho trước
         if (!Collection::hasMacro('paginate')) {
 
             Collection::macro('paginate', 
