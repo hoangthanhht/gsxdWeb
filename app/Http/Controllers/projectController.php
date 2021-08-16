@@ -81,4 +81,27 @@ class projectController extends Controller
                 'msg' => 'Post can not be updated'
             ], 500);
     }
+    public function destroy($id)
+    {
+        $projectMana = projectMana::find($id);
+ 
+        if (!$projectMana) {
+            return response()->json([
+                'success' => false,
+                'msg' => 'projectMana not found'
+            ], 400);
+        }
+ 
+        if ($projectMana->delete()) {
+            return response()->json([
+                'success' => true,
+                'msg' => 'Xóa thành công'
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'msg' => 'projectMana can not be deleted'
+            ], 500);
+        }
+    }
 }

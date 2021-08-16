@@ -3,64 +3,59 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\contract;
-class contractController extends Controller
+use App\Models\position;
+class positionController extends Controller
 {
     public function store(Request $request)
     {
-        $contract = contract::create([
+        $position = position::create([
             //$ArticlePost = DB::table('article_posts')->insert([
-                'tenHopDong'=>$request->tenHopDong,
-                'loaiHopDong'=>$request->loaiHopDong,
-                'duAn'=>$request->duAn,
-                'giaTriHD'=>$request->giaTriHD,
-                'nhanSuLienQuan'=>$request->nhanSuLienQuan,
-                'batDau'=>$request->batDau,
-                'ketThuc'=>$request->ketThuc,
-                'donVi'=>$request->donVi,
-                'khoiLuong'=>$request->khoiLuong,
+                'chucDanh'=>$request->chucDanh,
+                'ghiChu'=>$request->ghiChu,
+                'maChucDanh'=>$request->maChucDanh,
+         
         ]);
-        if($contract) {
+        if($position) {
             return response()->json([
                 'success' => true,
-                'msg' => 'Tạo hợp đồng thành công',
+                'msg' => 'Tạo chức danh thành công',
             ]);
         }else{
             return response()->json([
                 'success' => false,
-                'msg' => 'Tạo hợp đồng không thành công',
+                'msg' => 'Tạo chức danh không thành công',
             ]);
         }
     }
 
     public function show ()
     {
-        $contract = contract::paginate(20);
+        $position = position::paginate(20);
         // $posts = auth()->user()->posts;
 
-        return response()->json($contract);
+        return response()->json($position);
     }
 
-    public function getContractById ($contract_id)
+    public function getPositionById ($position_id)
     {
-        $contract = contract::find($contract_id);
+        $position = position::find($position_id);
         // $posts = auth()->user()->posts;
 
-        return response()->json($contract);
+        return response()->json($position);
     }
 
     public function update(Request $request, $id)
     {
-        $contract = contract::find($id);
+        $position = position::find($id);
  
-        if (!$contract) {
+        if (!$position) {
             return response()->json([
                 'success' => false,
                 'msg' => 'File not found'
             ], 400);
         }
  
-        $updated = $contract->fill($request->all())->save();
+        $updated = $position->fill($request->all())->save();
  
         if ($updated)
             return response()->json([
@@ -75,16 +70,16 @@ class contractController extends Controller
     }
     public function destroy($id)
     {
-        $contract = contract::find($id);
+        $position = position::find($id);
  
-        if (!$contract) {
+        if (!$position) {
             return response()->json([
                 'success' => false,
-                'msg' => 'contract not found'
+                'msg' => 'Position not found'
             ], 400);
         }
  
-        if ($contract->delete()) {
+        if ($position->delete()) {
             return response()->json([
                 'success' => true,
                 'msg' => 'Xóa thành công'
@@ -92,7 +87,7 @@ class contractController extends Controller
         } else {
             return response()->json([
                 'success' => false,
-                'msg' => 'contract can not be deleted'
+                'msg' => 'Position can not be deleted'
             ], 500);
         }
     }

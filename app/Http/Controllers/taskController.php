@@ -76,4 +76,27 @@ class taskController extends Controller
                 'msg' => 'Post can not be updated'
             ], 500);
     }
+    public function destroy($id)
+    {
+        $task = task::find($id);
+ 
+        if (!$task) {
+            return response()->json([
+                'success' => false,
+                'msg' => 'task not found'
+            ], 400);
+        }
+ 
+        if ($task->delete()) {
+            return response()->json([
+                'success' => true,
+                'msg' => 'Xóa thành công'
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'msg' => 'task can not be deleted'
+            ], 500);
+        }
+    }
 }

@@ -102,4 +102,27 @@ class infomationEmployController extends Controller
                 'msg' => 'Post can not be updated'
             ], 500);
     }
+    public function destroy($id)
+    {
+        $infomationEmploy = infomationEmploy::find($id);
+ 
+        if (!$infomationEmploy) {
+            return response()->json([
+                'success' => false,
+                'msg' => 'infomationEmploy not found'
+            ], 400);
+        }
+ 
+        if ($infomationEmploy->delete()) {
+            return response()->json([
+                'success' => true,
+                'msg' => 'Xóa thành công'
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'msg' => 'infomationEmploy can not be deleted'
+            ], 500);
+        }
+    }
 }

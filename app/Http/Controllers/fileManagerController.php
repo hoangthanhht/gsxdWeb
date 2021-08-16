@@ -78,4 +78,27 @@ class fileManagerController extends Controller
                 'msg' => 'Post can not be updated'
             ], 500);
     }
+    public function destroy($id)
+    {
+        $fileManager = fileManager::find($id);
+ 
+        if (!$fileManager) {
+            return response()->json([
+                'success' => false,
+                'msg' => 'fileManager not found'
+            ], 400);
+        }
+ 
+        if ($fileManager->delete()) {
+            return response()->json([
+                'success' => true,
+                'msg' => 'Xóa thành công'
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'msg' => 'fileManager can not be deleted'
+            ], 500);
+        }
+    }
 }
