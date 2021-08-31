@@ -46,6 +46,14 @@ class fileManagerController extends Controller
         return response()->json($file);
     }
 
+    public function getAllFile()
+    {
+        $fileManager = fileManager::all();
+        // $posts = auth()->user()->posts;
+
+        return response()->json($fileManager);
+    }
+
     public function getFileById ($fileManager_id)
     {
         $fileManager = fileManager::find($fileManager_id);

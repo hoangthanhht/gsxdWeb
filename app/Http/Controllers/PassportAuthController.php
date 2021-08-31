@@ -17,6 +17,7 @@ use App\Traits\StorageImageTrait;
 use App\Traits\HelperTrait;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
+use phpDocumentor\Reflection\Types\This;
 
 class PassportAuthController extends Controller
 {
@@ -24,7 +25,9 @@ class PassportAuthController extends Controller
     /**
      * Registration
      */
-    public function register(ruleRegister $request)
+
+
+    public  function register(ruleRegister $request)
     {
 
         // $rs = $this->validate($request, [
@@ -92,6 +95,8 @@ class PassportAuthController extends Controller
      */
     public function login(Request $request)
     {
+      
+      
         $data = [
             'email' => $request->email,
             'password' => $request->password

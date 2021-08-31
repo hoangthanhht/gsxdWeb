@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\position;
+use App\Http\Controllers\PassportAuthController;
 class positionController extends Controller
 {
+
     public function store(Request $request)
     {
         $position = position::create([

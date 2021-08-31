@@ -42,6 +42,7 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::post('/email/verification-notification', [VerifyEmailController::class, 'resendNotification'])
     ->name('verification.send');
     });
+
 // route này sẽ hiện ra khi người dùng click vào link xác minh
 Route::get('/email/verify/{id}/{hash}', [VerifyEmailController::class, 'verify'])
     ->middleware(['signed'])->name('verification.verify');
@@ -100,6 +101,9 @@ Route::get('getTaskById/{id}', [taskController::class, 'getTaskById']);
 Route::post('update/{id}', [taskController::class, 'update']);
 // xoa tin công việc
 Route::post('destroyTask/{id}', [taskController::class, 'destroy']);
+//get all công việc
+Route::get('getAllTask', [taskController::class, 'getAllTask']);
+
 //====================================\\//====================================//
 /* API CHO HỒ SƠ */
 // tạo hồ sơ
@@ -112,6 +116,8 @@ Route::get('getFileById/{id}', [fileManagerController::class, 'getFileById']);
 Route::post('update/{id}', [fileManagerController::class, 'update']);
 // xoa tin  ho so
 Route::post('destroyFile/{id}', [fileManagerController::class, 'destroy']);
+//get all ho so
+Route::get('getAllFile', [fileManagerController::class, 'getAllFile']);
 //=======================================\\//==================================//
 
 /* API CHO HOP DỒNG */
@@ -125,6 +131,10 @@ Route::get('getContractById/{id}', [contractController::class, 'getContractById'
 Route::post('update/{id}', [contractController::class, 'update']);
 // xoa tin hợp đồng
 Route::post('destroyContract/{id}', [contractController::class, 'destroy']);
+//get all hợp đồng
+Route::get('getAllContract', [contractController::class, 'getAllContract']);
+
+
 //=======================================\\//==================================//
 
 /* API CHO PROJECT */
@@ -149,6 +159,9 @@ Route::post('createinfomationEmploy', [infomationEmployController:: class,'store
 Route::get('showinfomationEmploy', [infomationEmployController::class, 'show']);
 // lấy infomation Employ 
 Route::get('getInfomationEmployById/{id}', [infomationEmployController::class, 'getInfomationEmployById']);
+// lấy infomation Employ 
+Route::get('getInfomationEmployByAcount/{ac}', [infomationEmployController::class, 'getInfomationEmployByAcount']);
+
 // update infomation Employ
 Route::post('update/{id}', [infomationEmployController::class, 'update']);
 // xoa tin infomation Employ
@@ -171,6 +184,7 @@ Route::get('getPositionById/{id}', [positionController::class, 'getPositionById'
 Route::post('update/{id}', [positionController::class, 'update']);
 // xoa tin Position
 Route::post('destroyPosition/{id}', [positionController::class, 'destroy']);
+
 
 
 Route::get('test/{name}', [BackupController::class, 'destroy']);

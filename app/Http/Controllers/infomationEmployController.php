@@ -78,6 +78,16 @@ class infomationEmployController extends Controller
         return response()->json($infomationEmploy);
     }
 
+    public function getInfomationEmployByAcount ($acount)
+    {
+        $infomationEmploy = infomationEmploy::where('userNameEmploy', $acount)
+  
+        ->first();
+        // $posts = auth()->user()->posts;
+
+        return response()->json($infomationEmploy);
+    }
+
     public function update(Request $request, $id)
     {
         $infomationEmploy = infomationEmploy::find($id);

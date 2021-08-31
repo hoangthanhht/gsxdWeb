@@ -44,6 +44,15 @@ class taskController extends Controller
 
         return response()->json($task);
     }
+
+    public function getAllTask ()
+    {
+        $task = task::all();
+        // $posts = auth()->user()->posts;
+
+        return response()->json($task);
+    }
+
     public function getTaskById ($task_id)
     {
         $task = task::find($task_id);

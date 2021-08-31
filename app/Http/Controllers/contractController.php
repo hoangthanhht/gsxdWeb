@@ -41,6 +41,15 @@ class contractController extends Controller
         return response()->json($contract);
     }
 
+
+    public function getAllContract ()
+    {
+        $contract = contract::all();
+        // $posts = auth()->user()->posts;
+
+        return response()->json($contract);
+    }
+
     public function getContractById ($contract_id)
     {
         $contract = contract::find($contract_id);
