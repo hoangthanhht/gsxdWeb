@@ -70,6 +70,14 @@ class infomationEmployController extends Controller
         return response()->json($infomationEmploy);
     }
 
+    public function getAllInfomationEmploy ()
+    {
+        $infomationEmploy = infomationEmploy::all();
+        // $posts = auth()->user()->posts;
+
+        return response()->json($infomationEmploy);
+    }
+
     public function getInfomationEmployById ($infomationEmploy_id)
     {
         $infomationEmploy = infomationEmploy::find($infomationEmploy_id);

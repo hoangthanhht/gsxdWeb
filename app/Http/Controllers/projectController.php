@@ -42,6 +42,14 @@ class projectController extends Controller
         return response()->json($projectMana);
     }
 
+    public function getAllProjectMana()
+    {
+        $projectMana = projectMana::all();
+        // $posts = auth()->user()->posts;
+
+        return response()->json($projectMana);
+    }
+
     public function getProjectName ()
     {
         $projectName = projectMana::all();

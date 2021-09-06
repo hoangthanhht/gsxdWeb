@@ -150,6 +150,9 @@ Route::get('getProjectById/{id}', [projectController::class, 'getProjectById']);
 Route::post('update/{id}', [projectController::class, 'update']);
 // xoa tin project
 Route::post('destroyProject/{id}', [projectController::class, 'destroy']);
+//get all project
+Route::get('getAllProjectMana', [projectController::class, 'getAllProjectMana']);
+
 //=======================================\\//==================================//
 
 /* API CHO INFOMATION EMPLOY*/
@@ -161,6 +164,8 @@ Route::get('showinfomationEmploy', [infomationEmployController::class, 'show']);
 Route::get('getInfomationEmployById/{id}', [infomationEmployController::class, 'getInfomationEmployById']);
 // lấy infomation Employ 
 Route::get('getInfomationEmployByAcount/{ac}', [infomationEmployController::class, 'getInfomationEmployByAcount']);
+// lấy infomation Employ 
+Route::get('getAllInfomationEmploy', [infomationEmployController::class, 'getAllInfomationEmploy']);
 
 // update infomation Employ
 Route::post('update/{id}', [infomationEmployController::class, 'update']);
