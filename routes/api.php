@@ -98,7 +98,7 @@ Route::get('showTask', [taskController::class, 'show']);
 // lấy công việc 
 Route::get('getTaskById/{id}', [taskController::class, 'getTaskById']);
 // update công việc 
-Route::post('update/{id}', [taskController::class, 'update']);
+Route::post('updateTask/{id}', [taskController::class, 'update']);
 // xoa tin công việc
 Route::post('destroyTask/{id}', [taskController::class, 'destroy']);
 //get all công việc
@@ -113,7 +113,7 @@ Route::get('showFile', [fileManagerController::class, 'show']);
 // lấy công việc 
 Route::get('getFileById/{id}', [fileManagerController::class, 'getFileById']);
 // update ho so
-Route::post('update/{id}', [fileManagerController::class, 'update']);
+Route::post('updateFile/{id}', [fileManagerController::class, 'update']);
 // xoa tin  ho so
 Route::post('destroyFile/{id}', [fileManagerController::class, 'destroy']);
 //get all ho so
@@ -128,7 +128,7 @@ Route::get('showContract', [contractController::class, 'show']);
 // lấy hợp đồng 
 Route::get('getContractById/{id}', [contractController::class, 'getContractById']);
 // update hợp đồng
-Route::post('update/{id}', [contractController::class, 'update']);
+Route::post('updateContract/{id}', [contractController::class, 'update']);
 // xoa tin hợp đồng
 Route::post('destroyContract/{id}', [contractController::class, 'destroy']);
 //get all hợp đồng
@@ -147,7 +147,7 @@ Route::get('getProjectName', [projectController::class, 'getProjectName']);
 // lấy tin project 
 Route::get('getProjectById/{id}', [projectController::class, 'getProjectById']);
 // update tin project
-Route::post('update/{id}', [projectController::class, 'update']);
+Route::post('updateProject/{id}', [projectController::class, 'update']);
 // xoa tin project
 Route::post('destroyProject/{id}', [projectController::class, 'destroy']);
 //get all project
@@ -168,7 +168,7 @@ Route::get('getInfomationEmployByAcount/{ac}', [infomationEmployController::clas
 Route::get('getAllInfomationEmploy', [infomationEmployController::class, 'getAllInfomationEmploy']);
 
 // update infomation Employ
-Route::post('update/{id}', [infomationEmployController::class, 'update']);
+Route::post('updateInfomationEmploy/{id}', [infomationEmployController::class, 'update']);
 // xoa tin infomation Employ
 Route::post('destroyInfomationEmploy/{id}', [infomationEmployController::class, 'destroy']);
 //=======================================\\//==========================================================//
@@ -179,7 +179,7 @@ Route::get('deleteFile/{id}', [BackupController::class, 'destroy']);
 
 //=======================================\\//==================================//
 /* API CHO POSITION */
-// tạo project
+// tạo Position
 Route::post('createPosition', [positionController:: class,'store']);
 // lấy thông tin Position
 Route::get('showPosition', [positionController::class, 'show']);

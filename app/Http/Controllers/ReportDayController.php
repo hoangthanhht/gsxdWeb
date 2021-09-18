@@ -40,6 +40,7 @@ class ReportDayController extends Controller
  
     public function store(Request $request)
     {
+       
         $this->validate($request, [
             'contentJson' => 'required',
             'dateBaocao' => 'required',
