@@ -24,6 +24,7 @@ class CreateContractsTable extends Migration
             $table->text('ketThuc')->nullable();
             $table->text('donVi')->nullable();
             $table->text('khoiLuong')->nullable();
+            $table->text('pathFile'); 
             $table->timestamps();
         });
     }

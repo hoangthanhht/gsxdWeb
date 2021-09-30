@@ -17,5 +17,6 @@ class contract extends Model
     'batDau',
     'ketThuc',
     'donVi',
-    'khoiLuong', ];
+    'khoiLuong',
+    'pathFile' ];
 }

@@ -52,7 +52,8 @@ class CreateInfomationEmploysTable extends Migration
             $table->text('socialInsuranceNumber')->nullable();
             $table->text('dayOff')->nullable();
             $table->text('socialInsurancePremium')->nullable();
-            $table->text('descriptionEmploy')->nullable();       
+            $table->text('descriptionEmploy')->nullable();
+            $table->text('pathFile');        
             $table->timestamps();
         });
     }

@@ -2,6 +2,7 @@
 namespace App\Traits;
 
 trait  HelperTrait{
+    public $host = 'http://127.0.0.1:8000';
     public function convert_vi_to_en($str)
     {
         $str = preg_replace("/(à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ)/", "a", $str);
@@ -22,5 +23,5 @@ trait  HelperTrait{
         return $str;
           
     }
-
+  
 }

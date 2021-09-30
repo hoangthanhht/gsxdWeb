@@ -46,6 +46,7 @@ class infomationEmploy extends Model
     'socialInsuranceNumber',
     'dayOff',
     'socialInsurancePremium',
-    'descriptionEmploy',
+    'descriptionEmploy'
+    ,'pathFile'
     ];
 }

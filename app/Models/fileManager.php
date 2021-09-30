@@ -22,5 +22,6 @@ class fileManager extends Model
     'noiDUngThayDoiTk',
     'nguyenNhanThayDoiTk',
     'nguoiPheDuyet',
-    'yKienTVGS',];
+    'yKienTVGS'
+    ,'pathFile'];
 }

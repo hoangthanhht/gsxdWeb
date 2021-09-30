@@ -99,11 +99,14 @@ Route::get('showTask', [taskController::class, 'show']);
 Route::get('getTaskById/{id}', [taskController::class, 'getTaskById']);
 // update công việc 
 Route::post('updateTask/{id}', [taskController::class, 'update']);
-// xoa tin công việc
+// xoa công việc
 Route::post('destroyTask/{id}', [taskController::class, 'destroy']);
+
 //get all công việc
 Route::get('getAllTask', [taskController::class, 'getAllTask']);
-
+//===================================\\//=====================================//
+// xoa file dinh kem dùng chung cho cong việc ,hồ sơ,hợp đồng ,dự án
+Route::post('destroyFileAttach/{id}', [taskController::class, 'destroyFileAttach']);
 //====================================\\//====================================//
 /* API CHO HỒ SƠ */
 // tạo hồ sơ

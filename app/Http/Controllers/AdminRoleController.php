@@ -88,8 +88,6 @@ class AdminRoleController extends Controller
         
         try {
             DB::beginTransaction();
-            
-            
             $roles = Role::find($idRole)->update([
                 'slug' => $request->slug,
                 'name' => $request->name,

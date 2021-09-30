@@ -166,7 +166,8 @@ class PassportAuthController extends Controller
  
       if ($file = $request->file('objFile')) {
 
-            $dataUploadTrait = $this->storageTraitUpload($file);
+            $dataUploadTrait = $this->storageTraitUpload($file,'avatar');
+           
             // $fileNameOrigin= $file->getClientOriginalName();
             // $fileNameHash= Str::random(20) . '.' . $file->getClientOriginalExtension();
             // $filePath = $file->storeAs('public/'. 'avatar', $fileNameHash);
@@ -207,11 +208,7 @@ class PassportAuthController extends Controller
                 array_push($arrSlug, $item->slug); 
             }
             // update lại tên bên bảng giá vật tư khi người dùng thay đổi tên
-            DB::table('material_costs')
-            ->where('user_id', $user->id)
-            ->update([
-                'tacGia' => $user ? $user->name : null,   
-            ]);
+           
              if($uploadAvartar) {
                 return response()->json([ "success" => $uploadAvartar,
                 "message" => "Upload file thành công",
@@ -284,7 +281,6 @@ class PassportAuthController extends Controller
     //     if($pos!==false){
     //         echo('va day');
     //     }
-  dd('123');
      
     // Gom nhóm với mỗi nhóm là 2 phần tử
     }

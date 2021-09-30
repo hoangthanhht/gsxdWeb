@@ -18,5 +18,6 @@ class projectMana extends Model
     'ngayKetThucThucTe',
     'trangThai',
     'nhanSuChinh',
-    'nhanSuLienQuan',];
+    'nhanSuLienQuan',
+    'pathFile'];
 }

@@ -29,6 +29,7 @@ class CreateFileManagersTable extends Migration
             $table->text('nguyenNhanThayDoiTk')->nullable();
             $table->text('nguoiPheDuyet')->nullable();
             $table->text('yKienTVGS')->nullable();
+            $table->text('pathFile'); 
             $table->timestamps();
         });
     }

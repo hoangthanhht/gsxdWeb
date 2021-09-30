@@ -26,6 +26,7 @@ class CreateTasksTable extends Migration
             $table->text('ketQua')->nullable(); 
             $table->text('tinhTrang')->nullable(); 
             $table->text('luuY')->nullable(); 
+            $table->text('pathFile'); 
             $table->timestamps();
         });
     }

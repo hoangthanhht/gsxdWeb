@@ -25,6 +25,7 @@ class CreateProjectManasTable extends Migration
             $table->text('trangThai')->nullable();
             $table->text('nhanSuChinh')->nullable();
             $table->text('nhanSuLienQuan')->nullable();
+            $table->text('pathFile'); 
             $table->timestamps();
         });
     }
